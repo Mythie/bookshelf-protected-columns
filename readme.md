@@ -83,3 +83,12 @@ const update = async (req, res) => {
   }
 }
 ```
+
+## Testing
+Testing of the plugin is seamless as it uses the mocha.js testing framework with the chai.js TDD and BDD 
+assertion library.
+
+To test the plugin simply use the docker-compose file provided.
+`docker-compose up -d`
+Then execute the test suite using the following command
+`docker-compose exec node npm test`
