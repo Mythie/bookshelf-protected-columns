@@ -1,0 +1,29 @@
+{
+  "name": "bookshelf-protected-columns",
+  "version": "0.1.0",
+  "description": "A plugin for bookshelf.js that allows for the protection of columns",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mythie/bookshelf-protected-columns.git"
+  },
+  "keywords": [
+    "bookshelfjs"
+  ],
+  "author": "Lucas Smith",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Mythie/bookshelf-protected-columns/issues"
+  },
+  "homepage": "https://github.com/Mythie/bookshelf-protected-columns#readme",
+  "peerDependencies": {
+    "bookshelf": "0.13.x"
+  },
+  "devDependencies": {
+    "bookshelf": "^0.13.3",
+    "knex": "^0.15.2"
+  }
+}
