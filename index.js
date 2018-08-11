@@ -13,7 +13,7 @@ module.exports = (Bookshelf) => {
       // Call the constructor on the prototype chain so as to not get rid of anything that other plugins may do.
       ModelPrototype.constructor.call(this, arguments);
       this.enable_protected_columns = true;
-      // If the immutable_columns property exists and is an array
+      // If the protected_columns property exists and is an array
       if (this.protected_columns && (this.protected_columns instanceof Array)) {
         // Then register a function to the updating event
         this.on('updating', this.protect_columns);
