@@ -12,7 +12,13 @@
     "url": "git+https://github.com/Mythie/bookshelf-protected-columns.git"
   },
   "keywords": [
-    "bookshelfjs"
+    "bookshelfjs",
+    "bookshelf",
+    "database",
+    "protect",
+    "columns",
+    "knex",
+    "model"
   ],
   "author": "Lucas Smith",
   "license": "MIT",
