@@ -12,6 +12,7 @@ module.exports = (Bookshelf) => {
     constructor() {
       // Call the constructor on the prototype chain so as to not get rid of anything that other plugins may do.
       ModelPrototype.constructor.call(this, arguments);
+      this.enable_protected_columns = true;
       // If the immutable_columns property exists and is an array
       if (this.protected_columns && (this.protected_columns instanceof Array)) {
         // Then register a function to the updating event
@@ -31,11 +32,11 @@ module.exports = (Bookshelf) => {
     async forceUpdate(key, val, options) {
       try {
         // Turn off the updating listener to prevent protect_columns from being called.
-        this.off('updating');
+        this.enable_protected_columns = false;
         // Save the model
         await ModelPrototype.save.call(this, key, val, options);
         // Re-register the updating event with the protect_columns function
-        this.on('updating', this.protect_columns);
+        this.enable_protected_columns = true;
         return this;
       } catch(e) {
         // Catching only to throw again to it can be caught further down the line?
@@ -53,9 +54,11 @@ module.exports = (Bookshelf) => {
      */
     protect_columns(model, attributes, options) {
       // Use a for loop to iterate over each item of the array,
-      for (let i = 0; i < this.protected_columns.length; i++) {
-        // Set the model to use the _previousAttributes value for the protected column
-        this.set(this.protected_columns[i], model._previousAttributes[this.protected_columns[i]]);
+      if(this.enable_protected_columns) {
+        for (let i = 0; i < this.protected_columns.length; i++) {
+          // Set the model to use the _previousAttributes value for the protected column
+          this.set(this.protected_columns[i], model._previousAttributes[this.protected_columns[i]]);
+        }
       }
     },
   });
