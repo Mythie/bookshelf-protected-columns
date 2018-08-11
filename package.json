@@ -1,6 +1,6 @@
 {
   "name": "bookshelf-protected-columns",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A plugin for bookshelf.js that allows for the protection of columns",
   "main": "index.js",
   "scripts": {
