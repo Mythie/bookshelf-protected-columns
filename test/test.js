@@ -66,5 +66,21 @@ describe('bookshelf-protected-columns', function() {
       user.get('name').should.equal('Johno');
       user.get('name').should.not.equal('Lucas');
     });
+
+    it('should still fail to update on a normal save', async function() {
+      let user = await TestModel.where('name', 'Lucas').fetch({ require: true });
+      user.set('protected', 'something else');
+      user.set('name', 'Johno');
+      user = await user.forceUpdate();
+      user.get('protected').should.equal('something else');
+      user.get('protected').should.not.equal('this shouldn\'t change');
+      user.get('name').should.equal('Johno');
+      user.get('name').should.not.equal('Lucas');
+      // Normal save after force update to verify
+      user.set('protected', 'should be protected');
+      user = await user.save();
+      user.get('protected').should.not.equal('should be protected');
+      user.get('protected').should.equal('something else');
+    });
   });
 });
