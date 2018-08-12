@@ -6,7 +6,7 @@ services:
 before_script:
   - docker-compose up -d
   - sleep 15
-  - docker-compose run node npm install
+  - docker-compose exec node npm install
 
 script:
-  - docker-compose run node npm test
+  - docker-compose exec node npm test
