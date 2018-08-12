@@ -3,9 +3,9 @@ sudo: required
 services:
   - docker
 
-before_install:
+before_script:
   - docker-compose up -d
-  - sleep 10
+  - sleep 15
 
 script:
   - docker-compose run node npm test
