@@ -12,6 +12,7 @@ module.exports = (Bookshelf) => {
     constructor() {
       // Call the constructor on the prototype chain so as to not get rid of anything that other plugins may do.
       ModelPrototype.constructor.call(this, arguments);
+      // Create the enable_protected_columns boolean so we can override it for a force update.
       this.enable_protected_columns = true;
       // If the protected_columns property exists and is an array
       if (this.protected_columns && (this.protected_columns instanceof Array)) {
@@ -31,12 +32,11 @@ module.exports = (Bookshelf) => {
      */
     async forceUpdate(key, val, options) {
       try {
-        // Turn off the updating listener to prevent protect_columns from being called.
         this.enable_protected_columns = false;
         // Save the model
         await ModelPrototype.save.call(this, key, val, options);
-        // Re-register the updating event with the protect_columns function
         this.enable_protected_columns = true;
+
         return this;
       } catch(e) {
         // Catching only to throw again to it can be caught further down the line?

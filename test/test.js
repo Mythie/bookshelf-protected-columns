@@ -13,12 +13,16 @@ bookshelf.plugin(plugin);
 describe('bookshelf-protected-columns', function() {
   var TestModel;
 
-  before(function() {
+  before(async function() {
     TestModel = bookshelf.Model.extend({
       tableName: 'users',
       protected_columns: ['protected']
     });
     return knex.migrate.latest();
+  });
+
+  after(async function() {
+    return knex.destroy();
   });
 
   describe('Protection of columns', function() {
