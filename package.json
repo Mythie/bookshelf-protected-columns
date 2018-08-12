@@ -4,7 +4,7 @@
   "description": "A plugin for bookshelf.js that allows for the protection of columns",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
+    "test": "mocha --exit",
     "knex": "knex"
   },
   "repository": {
