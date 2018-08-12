@@ -1,4 +1,7 @@
 # Bookshelf Protected Columns
+![Build](https://travis-ci.org/Mythie/bookshelf-protected-columns.svg?branch=master)
+
+
 This bookshelf plugin allows a user to specify which columns they wish to be immutable or protected,
 the plugin reads these columns from the Model's `protected_columns` property which is set to undefined by
 default. In order to achieve this we register an event to the Models updating event that tells it to set the 
