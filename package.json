@@ -32,7 +32,7 @@
   "devDependencies": {
     "bookshelf": "^0.13.3",
     "chai": "^4.1.2",
-    "knex": "^0.19.5",
+    "knex": "^0.95.5",
     "mocha": "^7.0.1",
     "mysql": "^2.16.0"
   }
